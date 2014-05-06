@@ -1,0 +1,40 @@
+= SBuild Http Plugin
+:pluginversion: 0.0.9000
+:sbuildversion: 0.7.9010.0-8-0-M1
+:toc:
+:toc-placement: preamble
+:toclevels: 1
+
+This SBuild Plugin provides support for HTTP for http://sbuild.org[SBuild].
+
+== Download
+
+The SBuild HTTP Plugin can be downloaded from http://repo1.maven.org/maven2/org/sbuild/org.sbuild.plugins.http/[Maven Central].
+
+To include it in your SBuild build file use the `@classpath` annotation:
+
+[source,scala]
+[subs="attributes"]
+----
+@classpath("mvn:org.sbuild:org.sbuild.plugins.http:{pluginversion}")
+----
+
+== Building from Source
+
+If you want to build this plugin from source, you need at least SBuild {sbuildversion}.
+
+----
+git clone https://github.com/SBuild-org/sbuild-http-plugin.git
+cd sbuild-sbuild-plugin/org.sbuild.plugins.http
+sbuild jar
+----
+
+You will find the built jar in the directory `org.sbuild.plugins.http/target`.
+
+== Configuration
+
+All configurable properties are documented via ScalaDoc. See file link:org.sbuild.plugins.http/src/main/scala/org/sbuild/plugins/http/Http.scala[`Http.scala`].
+
+== Changelog
+
+_No public releases yet_
