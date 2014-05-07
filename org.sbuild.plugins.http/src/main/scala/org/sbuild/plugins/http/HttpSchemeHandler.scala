@@ -12,6 +12,7 @@ import org.sbuild.TargetContext
 import org.sbuild.CmdlineMonitor
 import org.sbuild.SBuildVersion
 import org.sbuild.Project
+import org.sbuild.Logger
 
 /**
  * An HTTP-Scheme handler, that will download the given URI into a directory preserving the URI as path.
@@ -27,10 +28,14 @@ class HttpSchemeHandler(downloadDir: File = null,
   forceDownload)
     with SchemeResolver {
 
+  Logger[HttpSchemeHandler].debug("Created " + this)
+
   override def resolve(schemeCtx: SchemeContext, targetContext: TargetContext) = {
     val lastModified = download(schemeCtx.path, project.monitor)
     targetContext.targetLastModified = lastModified
   }
+
+  override def toString() = super.toStringBase("project=" + project.projectFile)
 
 }
 
@@ -77,4 +82,13 @@ class HttpSchemeHandlerBase(val downloadDir: File, val forceDownload: Boolean = 
       }
     }
   }
+
+  def toStringBase(extra: String = "") = getClass.getSimpleName +
+    "(downloadDir=" + downloadDir +
+    ",forceDownload=" + forceDownload +
+    ",online=" + online +
+    "," + extra +
+    ")"
+
+  override def toString() = toStringBase()
 }

@@ -18,7 +18,7 @@ class HttpPlugin(implicit project: Project) extends Plugin[Http] {
 
   def applyToProject(instances: Seq[(String, Http)]): Unit = instances foreach {
     case (name, http) =>
-      SchemeHandler(name, new HttpSchemeHandler(downloadDir = http.downloadDir))
+      SchemeHandler(http.schemeName, new HttpSchemeHandler(downloadDir = http.downloadDir))
   }
 
 }
